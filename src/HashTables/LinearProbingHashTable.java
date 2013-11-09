@@ -5,8 +5,8 @@ public class LinearProbingHashTable<Type> {
 	private static final int DEFAULT_TABLE_SIZE = 101;
 	
 	private HashEntry<Type>[] array;
-	public int occupied;            // The number of occupied cells 
-	public int size;                // Current table size
+	private int occupied;            // The number of occupied cells 
+	private int size;                // Current table size
 	
 	public LinearProbingHashTable(){
 		this(DEFAULT_TABLE_SIZE);
@@ -62,6 +62,14 @@ public class LinearProbingHashTable<Type> {
 		}
 		
 		return false;
+	}
+	
+	public int getSize(){
+		return size;
+	}
+	
+	public int getOccupied(){
+		return occupied;
 	}
 	
 	private int linearProbe(int location){
@@ -132,7 +140,7 @@ public class LinearProbingHashTable<Type> {
 	}
 	
 	
-	// Simple main
+	// Sample main
 	public static void main( String [ ] args )
     {
 		LinearProbingHashTable<String> H = new LinearProbingHashTable<>( );
@@ -167,8 +175,8 @@ public class LinearProbingHashTable<Type> {
         long endTime = System.currentTimeMillis( );
         
         System.out.println( "Elapsed time: " + (endTime - startTime) );
-        System.out.println( "H size is: " + H.size );
-        System.out.println( "Array size is: " + (H.occupied/H.size));
+        System.out.println( "H size is: " + H.getSize() );
+        System.out.println( "Array size is: " + (H.getOccupied()));
     }
 	
 	
